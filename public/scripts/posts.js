@@ -7,6 +7,49 @@ function strip(html) {
    return tmp.textContent || tmp.innerText || "";
 }
 
+var NavBar = React.createClass({
+    render : function(){
+        return (
+            React.createElement("nav",
+                {className:"navbar navbar-default"},
+
+                React.createElement("div",
+                    {className : "container-fluid"},
+
+                    React.createElement("div",
+                        {className : "navbar-header"},
+
+                        React.createElement("button",
+                            {
+                                className : "navbar-toggle collapsed",
+                                type : "button",
+                                "data-toggle" : "collapse",
+                                "data-target" : "#"
+                            },
+
+                            React.createElement("span",
+                                {className : "sr-only"}),
+
+                            React.createElement("span",
+                                {className : "icon-bar"}),
+
+                            React.createElement("span",
+                                {className : "icon-bar"}),
+
+                            React.createElement("span",
+                                {className : "icon-bar"})
+                        ),
+
+                        React.createElement("a",
+                                {className : "navbar-brand"},
+                                "Keanux Blog")
+                    )
+                )
+            )
+        );
+    }
+});
+
 var Post = React.createClass({displayName: "Post",
   render: function() {
     var rawMarkup = converter.makeHtml(this.props.children.toString());
@@ -71,7 +114,7 @@ var PostBox = React.createClass({displayName: "PostBox",
   render: function() {
     return (
       React.createElement("div", {className: "postBox"},
-        React.createElement("h1", null, "Keanux"),
+        React.createElement(NavBar),
         React.createElement(PostList, {data: this.state.data})
       )
     );

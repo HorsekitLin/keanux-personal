@@ -7,6 +7,31 @@ function strip(html) {
    return tmp.textContent || tmp.innerText || "";
 }
 
+var NavBar = React.createClass({
+    render : function(){
+        return (
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <button
+                            type="button"
+                            className="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                        <a className="navbar-brand" href="#">Keanux Blog</a>
+                    </div>
+                </div>
+            </nav>
+        );
+    }
+});
+
 var Post = React.createClass({
   render: function() {
     var rawMarkup = converter.makeHtml(this.props.children.toString());
@@ -71,6 +96,11 @@ var PostBox = React.createClass({
   render: function() {
     return (
       <div className="postBox">
+        <div className="row">
+            <div className="col-xs-12 col-md-12 col-lg-12">
+                <NavBar />
+            </div>
+        </div>
         <h1>Keanux</h1>
         <PostList data={this.state.data} />
       </div>
